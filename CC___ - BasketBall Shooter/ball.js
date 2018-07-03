@@ -33,7 +33,9 @@ class Ball {
     }
 
     score() {
-        if (this.pos.x > target.pos.x - target.size &&
+        if (this.pos.x - this.size < target.pos.x - target.size && this.pos.x + this.size > target.pos.x - target.size) {
+            this.vel.y = -this.vel.y;
+        } else if (this.pos.x > target.pos.x - target.size &&
             this.pos.x < target.pos.x + target.size &&
             floor(this.pos.y) == floor(target.pos.y) &&
             this.vel.y >= 0) {
