@@ -1,6 +1,7 @@
 /*jshint esversion: 6*/
 
-const size = 10;
+let size = 10;
+let slider;
 let x = 0, y = 0;
 
 function setup() {
@@ -8,9 +9,13 @@ function setup() {
   background(33);
   stroke(255);
   strokeWeight(size/3);
+
+  createDiv();
+  slider = createSlider(1, 30, 10)
 }
 
 function draw() {
+  size = slider.value();
   if (random(1) > 0.5) {
     line(x, y, x + size, y + size);
   } else {
@@ -20,6 +25,12 @@ function draw() {
   if (x >= width) {
     x = 0;
     y += size;
+  }
+
+  if (y >= height) {
+    x = 0;
+    y = 0;
+    background(33);
   }
     
 }
